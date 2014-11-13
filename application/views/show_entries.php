@@ -9,9 +9,20 @@
 
 	<?php if (!empty($entries)) : ?>
 		<?php foreach($entries as $entry) : ?>
-		    <?php $edit = (isset($my_entries) && in_array($entry->id, $my_entries)) ? 'edit' : ' ';?>
+		    <?php 
+		        if (isset($my_entries) && in_array($entry->id, $my_entries)) {
+		            $edit   = 'edit'; 
+		            $delete = 'delete';
+		        } else {
+		            $edit   = ' ';
+		            $delete = ' ';
+		        }
+		    ?>
 			<h2><?=anchor(base_url().'blog/view/'.$entry->id,$entry->title)?></h2>
-			<h3><?=anchor(base_url().'blog/edit/'.$entry->id, $edit)?></h3>
+			<h3>
+			    <?=anchor(base_url().'blog/edit/'.$entry->id, $edit)?>
+			    <?=anchor(base_url().'blog/delete/'.$entry->id, $delete)?>
+			</h3>
 			Author: <?=$entry->author?><br />
 			Date: <?=convertDateTimetoTimeAgo($entry->date)?><hr />
 		<?php endforeach; ?>

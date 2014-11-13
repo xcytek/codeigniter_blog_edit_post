@@ -81,4 +81,13 @@ class Blog extends CI_Controller {
 	    
 	    redirect(base_url() . 'blog/view/' . $id);
 	}
+	
+	public function delete()
+	{
+	    $id_entry = $this->uri->segment(3);
+	    
+	    $this->blog_model->deleteEntry($id_entry);
+	    
+	    redirect(base_url());
+	}
 }

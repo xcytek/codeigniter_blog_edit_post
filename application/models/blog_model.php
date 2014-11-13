@@ -61,4 +61,9 @@ class Blog_model extends CI_Model {
 	    
 	    return $this->db->update('entries', $data);
 	}
+	
+	public function deleteEntry($id)
+	{
+	    return $this->db->delete('entries', array('id' => $id)); 
+	}
 }
