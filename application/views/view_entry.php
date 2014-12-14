@@ -7,6 +7,10 @@
 <body>
 	<?php include('menu.php');?>
 	
+	<?php if (empty($entry)) : ?>
+	    <h2>Entry not found</h2>
+	<?php else : ?>
+	
 	<h2><?=$entry->title?></h2>
 	<p><?=$entry->content?></p>
 	Author: <?=$entry->author?><br />
@@ -32,6 +36,8 @@
 		}
 		else
 			echo '<h3>No Comments!</h3>';
+			
+	endif;
 	?>
 	
 </body>
